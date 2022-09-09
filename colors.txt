@@ -1,0 +1,5 @@
+border bottom-color: #dadce0
+blue color : #1a73e8
+grey text: #5f6368
+black text : #202124
+blue text : #1a73e8
