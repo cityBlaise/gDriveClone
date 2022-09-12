@@ -3,6 +3,7 @@
 @import "./varibles";
 @import "./buttons";
 @import "./breckpoints";
+@import "./typo";
 
 hr {
     border: solid #dadce0;
@@ -28,7 +29,16 @@ img {
     margin-bottom: 2em;
     font-size: 1.4em;
     font-weight: lighter;
-    line-height: 30px;
+    line-height: 30px; 
+    @include sm_1{
+        padding-right: 10px;
+        font-size: 2em; 
+    }
+
+    @include lg_2{
+        font-size: 13em;
+        background-color: rgb(17, 248, 218);
+    }
 }
 
 .headline1 {
@@ -39,6 +49,12 @@ img {
     line-height: 22px;
     padding-right: 3px;
     margin-bottom: 3em;
+    @include sm_1{
+        // background-color: red;
+        font-size: 14.5px;
+    }
+
+    
 }
 
 
@@ -62,14 +78,15 @@ nav {
         button {
             border: none;
             outline: none;
-            background-color: #fafafab0;
-            padding-top: 8px;
-            padding-bottom: 6px;
+            padding-top: 10px;
+            padding-bottom: 8px;
             border-radius: 5px;
-            padding-inline: 10px;
+            padding-inline: 12px;
+            background-color: white;
 
             &:focus {
-                outline: solid 1px $border_bottom-color;
+                background-color: #f8f9fa; 
+                transition: background ease 200ms;
             }
         }
 
@@ -96,34 +113,45 @@ nav {
 
 main {
     width: 84%;
-    font-family: Poppins;
+    font-family: 'poppinsregular';
     margin-inline: auto;
     margin-bottom: 6em;
+    @include lg_2{
+        width: 90%;
+    }
 }
 
 .hero-content {
     margin-top: 3em;
     color: #121214e3;
     font-weight: 100;
-    font-size: 22px;
     line-height: 40px;
 
 
     .hero-heading {
         font-weight: 100;
-        font-size: 32px;
+        font-size: 30px;
         text-align: center;
-        padding-inline: 15px;
         color: #202124;
+        font-size: 33px;
+
+        &::first-letter {
+            font-size: 35px;
+        }
     }
 
     .hero-description {
         color: #5f6368;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 28px;
         text-align: center;
-        padding-inline: 7px;
         word-spacing: 2px;
+
+        @include sm_1{
+            padding-inline: 5px;
+            font-size: 14px;
+
+        }
     }
 
     .hero-btn {
@@ -161,23 +189,19 @@ main {
     .no-account {
         color: #5f6368;
         font-size: 15px;
-        text-align: center;
         margin-top: 10px;
 
 
         .hero-dropdown-container {
             position: relative;
-            grid-auto-flow: row;
 
-            // position: absolute;
-            // z-index: -5;
             .btn {
                 @include button;
                 padding-block: 15px;
-                padding-inline: 15px;
                 border-radius: 5px;
                 color: $blue_color;
                 background-color: rgb(255, 255, 255);
+                margin-left: 3em;
 
                 &::first-letter {
                     font-size: 17px;
@@ -204,7 +228,7 @@ main {
                     position: absolute;
                     padding-inline: 1em;
                     top: 38px;
-                    left: 42px;
+                    left: 43px;
                     padding-block: 1.5em;
                     background-color: white;
                     border-radius: 5px;
@@ -261,13 +285,53 @@ main {
 
     .headline {
         color: #202124;
-        margin-bottom: 2em;
         font-size: 1.4em;
         font-weight: lighter;
         line-height: 30px;
     }
+ 
+
+    @include lg_2{
+        br{
+            display: none;
+        }
+        hr{
+            display: none;
+        }
+        & >div{
+            display: grid; 
+            grid-auto-flow: column;
+            align-items: center;
+            margin-bottom: 2em; 
+            border: solid blue 2px;
+            grid-template-columns: 40% auto;
+            gap: 5em;
+            .img1{ 
+                border: solid red 1px;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+
+        &>div>div{
+            display: flex;
+            flex-direction: column; 
+        }
+        
+        .headline {
+            font-size: 2.2em;
+        line-height: 48px;
+        margin-bottom: 10px;
 
 
+        }
+
+        .headline1{
+            font-size: 1em;
+        }
+    }
 }
 
 
@@ -312,47 +376,51 @@ main {
         }
     }
 
-    .card-wapper {
+    .cont {
         width: 93%;
-        overflow-x: scroll;
         margin-inline: auto;
-        display: flex;
         margin-top: 5em;
-        color: #5f6368;
-        text-align: center;
-        font-size: 1.1em;
-        padding-bottom: 1em;
-        gap: 10px;
+        box-shadow: 0px 0px 10px 1px rgb(194, 197, 201);
+        margin-bottom: 1em;
+        overflow: hidden;
 
-        .img-wapper {
+        .card-wapper {
+            width: 100%;
+            color: #5f6368;
+            display: flex;
             text-align: center;
-            margin-bottom: 1.4em;
+            font-size: 1.1em;
 
-            img {
-                width: 60%;
+            .img-wapper {
+                text-align: center;
+                margin-bottom: 1.4em;
+
+                img {
+                    width: 60%;
+                }
             }
-        }
 
-        .card-item {
-            flex: 1 0 100%;
-            padding-top: 3em;
-            padding-inline: 1.2em;
-            padding-bottom: 3em;
-            background-color: white;
-            box-shadow: 0px 0px 10px 1px rgb(194, 197, 201);
+            .card-item {
+                flex: 1 0 100%;
+                padding-top: 3em;
+                padding-inline: 1.2em;
+                padding-bottom: 3em;
+                background-color: white;
 
-            &:nth-child(2) .img-wapper img {
-                width: 80%;
+                &:nth-child(2) .img-wapper img {
+                    width: 80%;
+                }
             }
-        }
 
 
 
-        a {
-            color: $blue_color;
-            font-size: 15px;
+            a {
+                color: $blue_color;
+                font-size: 15px;
+            }
         }
     }
+
 
     .item-target-wapper {
         width: 80%;
@@ -365,7 +433,6 @@ main {
             height: 15px;
             width: 15px;
             border-radius: 50%;
-            // border: 1px solid $blue_color;
             padding: 2px;
 
             .inside {
@@ -374,6 +441,11 @@ main {
                 height: 100%;
                 background-color: rgb(0, 0, 0);
             }
+        }
+
+        .active {
+            border: 1px solid $blue_color;
+            transition: all 300ms ease-in-out;
         }
     }
 }
@@ -567,67 +639,5 @@ footer {
             }
 
         }
-    }
-}
-
-
-.table {
-    // overflow: hidden;
-    display: flex;
-
-    table {
-        // transform: scaleX(.98);
-        width: 10%;
-        overflow: hidden; 
-        background-color: blue;
-        border-spacing: 0; 
-        thead {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            z-index: 9999999;
-            background-color: white;
-            th {
-                border: solid 1px $border_bottom-color;
-                border-left: none;
-                &>*:not(:first-child) , span{
-                    display: none;
-                }
-
-                &:nth-of-type(1){
-                    background-color: red;
-                    width: 0px;
-                    a{ 
-                        // font-size: 1.7em;
-                    }
-                }
-                // h4{
-                //     writing-mode: vertical-lr;
-                //     transform: rotate(-180deg) translateX(-130%) translateY(-20%);
-                //     font-size: 1.5em;
-                //     margin-inline: 50%;
-                //     background-color: red;
-                // }
-               
-                   
-            }
-
-        }
-
-
-        td {
-            border: solid 1px $border_bottom-color;
-            border-left: none;
-            border-top: none;
-
-            img{
-                display: none;
-            }
-
-            // font-size: 1.3em;
-        }
-
-        
-       
     }
 }

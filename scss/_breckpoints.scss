@@ -1,4 +1,5 @@
-$breakpoints:(
+$breakpoints: (
+
     sm:320px,
     sm_1:360px,
     sm_2:440px,
@@ -9,6 +10,17 @@ $breakpoints:(
     lg:1024px,
     lg_1:1366px,
     lg_2:1440px,
-    xl:1700px
+    xl:1700px,
+    dxl:1920) ;
+    
+@mixin sm_1 {
+    @media (min-width: 360px) {
+        @content;
+    }
+}
 
-)
+@mixin lg_2 {
+    @media (min-width: 1440px) {
+        @content;
+    }
+}

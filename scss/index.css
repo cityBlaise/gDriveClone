@@ -386,6 +386,12 @@ template {
 }
 
 /*# sourceMappingURL=normalize.min.css.map */
+@font-face {
+  font-family: "poppinsregular";
+  src: url("./../assets/fonts/poppins-regular-webfont.woff2") format("woff2"), url("./../assets/fonts/poppins-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 hr {
   border: solid #dadce0;
   border-width: 1px 0 0;
@@ -411,6 +417,18 @@ img {
   font-weight: lighter;
   line-height: 30px;
 }
+@media (min-width: 360px) {
+  .headline {
+    padding-right: 10px;
+    font-size: 2em;
+  }
+}
+@media (min-width: 1440px) {
+  .headline {
+    font-size: 13em;
+    background-color: rgb(17, 248, 218);
+  }
+}
 
 .headline1 {
   color: #5f6368;
@@ -420,6 +438,11 @@ img {
   line-height: 22px;
   padding-right: 3px;
   margin-bottom: 3em;
+}
+@media (min-width: 360px) {
+  .headline1 {
+    font-size: 14.5px;
+  }
 }
 
 nav {
@@ -441,14 +464,15 @@ nav .nav-wapper {
 nav .nav-wapper button {
   border: none;
   outline: none;
-  background-color: rgba(250, 250, 250, 0.6901960784);
-  padding-top: 8px;
-  padding-bottom: 6px;
+  padding-top: 10px;
+  padding-bottom: 8px;
   border-radius: 5px;
-  padding-inline: 10px;
+  padding-inline: 12px;
+  background-color: white;
 }
 nav .nav-wapper button:focus {
-  outline: solid 1px #dadce0;
+  background-color: #f8f9fa;
+  transition: background ease 200ms;
 }
 nav .nav-wapper .drive-icon {
   display: flex;
@@ -467,32 +491,44 @@ nav .nav-wapper p {
 
 main {
   width: 84%;
-  font-family: Poppins;
+  font-family: "poppinsregular";
   margin-inline: auto;
   margin-bottom: 6em;
+}
+@media (min-width: 1440px) {
+  main {
+    width: 90%;
+  }
 }
 
 .hero-content {
   margin-top: 3em;
   color: rgba(18, 18, 20, 0.8901960784);
   font-weight: 100;
-  font-size: 22px;
   line-height: 40px;
 }
 .hero-content .hero-heading {
   font-weight: 100;
-  font-size: 32px;
+  font-size: 30px;
   text-align: center;
-  padding-inline: 15px;
   color: #202124;
+  font-size: 33px;
+}
+.hero-content .hero-heading::first-letter {
+  font-size: 35px;
 }
 .hero-content .hero-description {
   color: #5f6368;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 28px;
   text-align: center;
-  padding-inline: 7px;
   word-spacing: 2px;
+}
+@media (min-width: 360px) {
+  .hero-content .hero-description {
+    padding-inline: 5px;
+    font-size: 14px;
+  }
 }
 .hero-content .hero-btn {
   margin-top: 34px;
@@ -521,12 +557,10 @@ main {
 .hero-content .no-account {
   color: #5f6368;
   font-size: 15px;
-  text-align: center;
   margin-top: 10px;
 }
 .hero-content .no-account .hero-dropdown-container {
   position: relative;
-  grid-auto-flow: row;
 }
 .hero-content .no-account .hero-dropdown-container .btn {
   border: none;
@@ -535,10 +569,10 @@ main {
   padding-bottom: 6px;
   padding-inline: 10px;
   padding-block: 15px;
-  padding-inline: 15px;
   border-radius: 5px;
   color: #1a73e8;
   background-color: rgb(255, 255, 255);
+  margin-left: 3em;
 }
 .hero-content .no-account .hero-dropdown-container .btn::first-letter {
   font-size: 17px;
@@ -562,7 +596,7 @@ main {
   position: absolute;
   padding-inline: 1em;
   top: 38px;
-  left: 42px;
+  left: 43px;
   padding-block: 1.5em;
   background-color: white;
   border-radius: 5px;
@@ -604,10 +638,45 @@ main {
 }
 .features .headline {
   color: #202124;
-  margin-bottom: 2em;
   font-size: 1.4em;
   font-weight: lighter;
   line-height: 30px;
+}
+@media (min-width: 1440px) {
+  .features br {
+    display: none;
+  }
+  .features hr {
+    display: none;
+  }
+  .features > div {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    margin-bottom: 2em;
+    border: solid blue 2px;
+    grid-template-columns: 40% auto;
+    gap: 5em;
+  }
+  .features > div .img1 {
+    border: solid red 1px;
+    overflow: hidden;
+  }
+  .features > div .img1 img {
+    width: 100%;
+  }
+  .features > div > div {
+    display: flex;
+    flex-direction: column;
+  }
+  .features .headline {
+    font-size: 2.2em;
+    line-height: 48px;
+    margin-bottom: 10px;
+  }
+  .features .headline1 {
+    font-size: 1em;
+  }
 }
 
 .teams-working-on {
@@ -644,37 +713,39 @@ main {
 .teams-working-on .teams-img-container div:nth-child(3n+1) img {
   width: 90%;
 }
-.teams-working-on .card-wapper {
+.teams-working-on .cont {
   width: 93%;
-  overflow-x: scroll;
   margin-inline: auto;
-  display: flex;
   margin-top: 5em;
+  box-shadow: 0px 0px 10px 1px rgb(194, 197, 201);
+  margin-bottom: 1em;
+  overflow: hidden;
+}
+.teams-working-on .cont .card-wapper {
+  width: 100%;
   color: #5f6368;
+  display: flex;
   text-align: center;
   font-size: 1.1em;
-  padding-bottom: 1em;
-  gap: 10px;
 }
-.teams-working-on .card-wapper .img-wapper {
+.teams-working-on .cont .card-wapper .img-wapper {
   text-align: center;
   margin-bottom: 1.4em;
 }
-.teams-working-on .card-wapper .img-wapper img {
+.teams-working-on .cont .card-wapper .img-wapper img {
   width: 60%;
 }
-.teams-working-on .card-wapper .card-item {
+.teams-working-on .cont .card-wapper .card-item {
   flex: 1 0 100%;
   padding-top: 3em;
   padding-inline: 1.2em;
   padding-bottom: 3em;
   background-color: white;
-  box-shadow: 0px 0px 10px 1px rgb(194, 197, 201);
 }
-.teams-working-on .card-wapper .card-item:nth-child(2) .img-wapper img {
+.teams-working-on .cont .card-wapper .card-item:nth-child(2) .img-wapper img {
   width: 80%;
 }
-.teams-working-on .card-wapper a {
+.teams-working-on .cont .card-wapper a {
   color: #1a73e8;
   font-size: 15px;
 }
@@ -696,6 +767,10 @@ main {
   border-radius: 50%;
   height: 100%;
   background-color: rgb(0, 0, 0);
+}
+.teams-working-on .item-target-wapper .active {
+  border: 1px solid #1a73e8;
+  transition: all 300ms ease-in-out;
 }
 
 .alredy-used-it .grid {
@@ -851,40 +926,4 @@ footer .link select {
 footer .link select:focus {
   background-color: #e8eaed;
   border: solid #dadce0 1px;
-}
-
-.table {
-  display: flex;
-}
-.table table {
-  width: 10%;
-  overflow: hidden;
-  background-color: blue;
-  border-spacing: 0;
-}
-.table table thead {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 9999999;
-  background-color: white;
-}
-.table table thead th {
-  border: solid 1px #dadce0;
-  border-left: none;
-}
-.table table thead th > *:not(:first-child), .table table thead th span {
-  display: none;
-}
-.table table thead th:nth-of-type(1) {
-  background-color: red;
-  width: 0px;
-}
-.table table td {
-  border: solid 1px #dadce0;
-  border-left: none;
-  border-top: none;
-}
-.table table td img {
-  display: none;
 }/*# sourceMappingURL=index.css.map */
